@@ -8,8 +8,12 @@ app = Flask('')
 def home():
     return "Bot is Online!"
 
+# Health check ke liye ye zaroori hai
+@app.route('/healthz')
+def health():
+    return "OK", 200
+
 def run():
-    # Render hamesha PORT mangta hai, ye line usey handle karegi
     port = int(os.environ.get("PORT", 10000))
     app.run(host='0.0.0.0', port=port)
 
